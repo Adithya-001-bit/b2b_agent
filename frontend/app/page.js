@@ -2,6 +2,28 @@
 
 import { useState, useEffect } from "react"
 
+function TypewriterText({ text, speed = 4 }) {
+  const [displayedText, setDisplayedText] = useState("")
+
+  useEffect(() => {
+    setDisplayedText("")
+    if (!text) return
+
+    let i = 0
+    const interval = setInterval(() => {
+      setDisplayedText((prev) => prev + text.charAt(i))
+      i++
+      if (i >= text.length) {
+        clearInterval(interval)
+      }
+    }, speed)
+
+    return () => clearInterval(interval)
+  }, [text, speed])
+
+  return <span className="whitespace-pre-wrap">{displayedText}</span>
+}
+
 export default function Home() {
 
   const [query, setQuery] = useState("")
@@ -272,13 +294,13 @@ export default function Home() {
     switch(agentName) {
       case "Planner Agent":
         return (
-          <svg className="w-5 h-5 text-cyan-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-cyan-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
           </svg>
         )
       case "Search Agent":
         return (
-          <svg className="w-5 h-5 text-purple-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-purple-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         )
@@ -290,7 +312,7 @@ export default function Home() {
         )
       case "Recommendation Agent":
         return (
-          <svg className="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
           </svg>
         )
@@ -357,7 +379,7 @@ export default function Home() {
           </h1>
         </div>
         <div className="flex items-center gap-2 font-mono text-xs text-zinc-500">
-          <span className="px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-250">
+          <span className="px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-200">
             FASTAPI RUNNING
           </span>
           <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
@@ -537,7 +559,7 @@ export default function Home() {
           <h2 className="
             text-base
             font-bold
-            mb-4
+            mb-6
             flex
             items-center
             gap-2
@@ -569,7 +591,7 @@ export default function Home() {
           )}
 
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-2">
 
             {[
               "Planner Agent",
@@ -578,39 +600,56 @@ export default function Home() {
               "Recommendation Agent"
             ].map((agent, index) => {
               const status = getAgentStatus(agent);
+              const isActive = status === "active";
+              const isCompleted = status === "completed";
               return (
-                <div
-                  key={index}
-                  className={`
-                    p-5
-                    rounded-xl
-                    border
-                    relative
-                    overflow-hidden
-                    transition-all
-                    duration-500
-                    flex
-                    flex-col
-                    justify-between
-                    h-32
-                    ${getAgentCardStyles(agent)}
-                  `}
-                >
-                  {status === "active" && <div className="scan-line" />}
-                  
-                  <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-sm flex items-center gap-2.5 text-zinc-800">
-                      {getAgentIcon(agent)}
-                      {agent}
-                    </h3>
-                    <span className="text-xs uppercase tracking-wider px-2.5 py-0.5 rounded font-mono font-bold bg-zinc-100 text-zinc-600">
-                      {status}
-                    </span>
-                  </div>
+                <div key={index} className="flex flex-col shrink-0">
+                  <div
+                    className={`
+                      p-5
+                      rounded-xl
+                      border
+                      relative
+                      overflow-hidden
+                      transition-all
+                      duration-500
+                      flex
+                      flex-col
+                      justify-between
+                      h-28
+                      ${getAgentCardStyles(agent)}
+                    `}
+                  >
+                    {isActive && <div className="scan-line" />}
+                    
+                    <div className="flex justify-between items-start">
+                      <h3 className="font-bold text-sm flex items-center gap-2.5 text-zinc-800">
+                        {getAgentIcon(agent)}
+                        {agent}
+                      </h3>
+                      <span className="text-xs uppercase tracking-wider px-2.5 py-0.5 rounded font-mono font-bold bg-zinc-100 text-zinc-600">
+                        {status}
+                      </span>
+                    </div>
 
-                  <p className="text-xs text-zinc-500 mt-2 font-mono leading-relaxed">
-                    {getAgentSubtext(agent)}
-                  </p>
+                    <p className="text-xs text-zinc-500 mt-2 font-mono leading-relaxed">
+                      {getAgentSubtext(agent)}
+                    </p>
+                  </div>
+                  
+                  {index < 3 && (
+                    <div className="flex justify-center my-1 shrink-0">
+                      <div className="w-[3px] h-6 bg-zinc-200/50 rounded-full relative overflow-hidden">
+                        <div 
+                          className={`absolute top-0 left-0 w-full rounded-full transition-all duration-500 ${
+                            isCompleted ? "h-full bg-emerald-500 shadow-[0_0_8px_#10b981]" :
+                            isActive ? "h-1/2 bg-emerald-400 animate-pulse" :
+                            "h-0"
+                          }`} 
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -788,9 +827,27 @@ export default function Home() {
 
           {loading ? (
 
-            <div className="text-emerald-600 font-mono text-xs flex items-center gap-2">
-              <span className="animate-spin inline-block w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full" />
-              Compiling Graph...
+            <div className="space-y-4 animate-pulse">
+              {/* Skeleton Domain */}
+              <div className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl h-20 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-zinc-200 h-3 w-1/4 rounded mb-2 animate-shimmer" />
+                <div className="bg-zinc-200 h-4 w-1/2 rounded animate-shimmer" />
+              </div>
+              {/* Skeleton Signals */}
+              <div className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl h-24 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-zinc-200 h-3 w-1/3 rounded mb-3 animate-shimmer" />
+                <div className="flex gap-2">
+                  <div className="bg-zinc-200 h-6 w-16 rounded-full animate-shimmer" />
+                  <div className="bg-zinc-200 h-6 w-20 rounded-full animate-shimmer" />
+                  <div className="bg-zinc-200 h-6 w-24 rounded-full animate-shimmer" />
+                </div>
+              </div>
+              {/* Skeleton Qualified Companies */}
+              <div className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl h-48 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-zinc-200 h-3 w-1/2 rounded mb-4 animate-shimmer" />
+                <div className="bg-zinc-200 h-10 w-full rounded-lg mb-2 animate-shimmer" />
+                <div className="bg-zinc-200 h-10 w-full rounded-lg animate-shimmer" />
+              </div>
             </div>
 
           ) : result ? (
@@ -811,7 +868,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-500
+                  text-zinc-550
                   mb-2
                   uppercase
                   tracking-wider
@@ -839,7 +896,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-500
+                  text-zinc-550
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -893,7 +950,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-500
+                  text-zinc-550
                   mb-3.5
                   uppercase
                   tracking-wider
@@ -959,7 +1016,7 @@ export default function Home() {
                             <p
                               key={i}
                               className="
-                                text-zinc-500
+                                text-zinc-550
                                 leading-relaxed
                               "
                             >
@@ -1102,7 +1159,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-500
+                  text-zinc-550
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -1114,10 +1171,9 @@ export default function Home() {
                   text-zinc-700
                   font-sans
                   leading-relaxed
-                  whitespace-pre-wrap
                   text-xs
                 ">
-                  {result.final_recommendations}
+                  <TypewriterText text={result.final_recommendations} />
                 </p>
 
               </div>
