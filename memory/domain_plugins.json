@@ -1,0 +1,38 @@
+[
+    {
+        "domain": "Agriculture",
+        "signals": [
+            "AI drones",
+            "smart farming"
+        ],
+        "personas": [
+            "CTO",
+            "Operations Head"
+        ],
+        "minimum_employee_count": 100
+    },
+
+    {
+        "domain": "Healthcare",
+        "signals": [
+            "AI diagnostics",
+            "telemedicine"
+        ],
+        "personas": [
+            "Hospital CTO"
+        ],
+        "minimum_employee_count": 300
+    },
+
+    {
+        "domain": "Finance",
+        "signals": [
+            "fraud detection",
+            "AI compliance"
+        ],
+        "personas": [
+            "Risk Manager"
+        ],
+        "minimum_employee_count": 400
+    }
+]

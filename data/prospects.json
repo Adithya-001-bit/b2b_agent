@@ -1,0 +1,301 @@
+[
+    {
+        "company": "AgroTech AI",
+        "domain": "Agriculture",
+        "signals": [
+            "AI drones",
+            "smart farming",
+            "precision agriculture"
+        ],
+        "personas": [
+            "CTO",
+            "Operations Head"
+        ],
+        "employee_count": 120
+    },
+
+    {
+        "company": "FarmVision",
+        "domain": "Agriculture",
+        "signals": [
+            "smart irrigation",
+            "AI drones"
+        ],
+        "personas": [
+            "Farm Manager",
+            "Operations Head"
+        ],
+        "employee_count": 80
+    },
+
+    {
+        "company": "CropMind Analytics",
+        "domain": "Agriculture",
+        "signals": [
+            "yield prediction",
+            "precision agriculture"
+        ],
+        "personas": [
+            "Innovation Head",
+            "Agronomist"
+        ],
+        "employee_count": 210
+    },
+
+    {
+        "company": "MedAI Systems",
+        "domain": "Healthcare",
+        "signals": [
+            "AI diagnostics",
+            "telemedicine",
+            "patient analytics"
+        ],
+        "personas": [
+            "Hospital CTO",
+            "Operations Director"
+        ],
+        "employee_count": 450
+    },
+
+    {
+        "company": "CarePredict",
+        "domain": "Healthcare",
+        "signals": [
+            "remote monitoring",
+            "AI diagnostics"
+        ],
+        "personas": [
+            "Medical Director",
+            "Innovation Lead"
+        ],
+        "employee_count": 250
+    },
+
+    {
+        "company": "HealthVision AI",
+        "domain": "Healthcare",
+        "signals": [
+            "medical imaging",
+            "AI diagnostics"
+        ],
+        "personas": [
+            "Clinical AI Lead",
+            "CTO"
+        ],
+        "employee_count": 600
+    },
+
+    {
+        "company": "FraudShield AI",
+        "domain": "Finance",
+        "signals": [
+            "fraud detection",
+            "AI risk analysis"
+        ],
+        "personas": [
+            "Risk Manager",
+            "CFO"
+        ],
+        "employee_count": 600
+    },
+
+    {
+        "company": "FinPilot",
+        "domain": "Finance",
+        "signals": [
+            "predictive finance",
+            "AI compliance"
+        ],
+        "personas": [
+            "Finance Director",
+            "Operations Head"
+        ],
+        "employee_count": 350
+    },
+
+    {
+        "company": "QuantEdge",
+        "domain": "Finance",
+        "signals": [
+            "algorithmic trading",
+            "risk analytics"
+        ],
+        "personas": [
+            "Quant Lead",
+            "CTO"
+        ],
+        "employee_count": 500
+    },
+
+    {
+        "company": "CyberGuard Labs",
+        "domain": "Cybersecurity",
+        "signals": [
+            "threat detection",
+            "AI security"
+        ],
+        "personas": [
+            "Security Head",
+            "CTO"
+        ],
+        "employee_count": 300
+    },
+
+    {
+        "company": "SecureNet AI",
+        "domain": "Cybersecurity",
+        "signals": [
+            "endpoint protection",
+            "AI threat intelligence"
+        ],
+        "personas": [
+            "SOC Manager",
+            "Security Architect"
+        ],
+        "employee_count": 420
+    },
+
+    {
+        "company": "RetailFlow",
+        "domain": "Retail",
+        "signals": [
+            "customer analytics",
+            "inventory optimization"
+        ],
+        "personas": [
+            "Retail Operations Head",
+            "Marketing Director"
+        ],
+        "employee_count": 700
+    },
+
+    {
+        "company": "ShopMind AI",
+        "domain": "Retail",
+        "signals": [
+            "recommendation engine",
+            "customer analytics"
+        ],
+        "personas": [
+            "Ecommerce Head",
+            "CTO"
+        ],
+        "employee_count": 280
+    },
+
+    {
+        "company": "LogiChain",
+        "domain": "Logistics",
+        "signals": [
+            "route optimization",
+            "predictive logistics"
+        ],
+        "personas": [
+            "Supply Chain Director",
+            "Operations Head"
+        ],
+        "employee_count": 520
+    },
+
+    {
+        "company": "FleetAI",
+        "domain": "Logistics",
+        "signals": [
+            "fleet analytics",
+            "AI route planning"
+        ],
+        "personas": [
+            "Fleet Manager",
+            "CTO"
+        ],
+        "employee_count": 310
+    },
+
+    {
+        "company": "CloudScale SaaS",
+        "domain": "SaaS",
+        "signals": [
+            "AI automation",
+            "CRM optimization"
+        ],
+        "personas": [
+            "Sales Head",
+            "CTO"
+        ],
+        "employee_count": 200
+    },
+
+    {
+        "company": "PipelinePro",
+        "domain": "SaaS",
+        "signals": [
+            "workflow automation",
+            "AI CRM"
+        ],
+        "personas": [
+            "Revenue Operations",
+            "Product Lead"
+        ],
+        "employee_count": 180
+    }
+    ,
+{
+    "company": "GenFlow AI",
+    "domain": "SaaS",
+    "signals": [
+        "AI platform as a service",
+        "Generative AI SaaS",
+        "AI APIs"
+    ],
+    "personas": [
+        "CTO",
+        "AI Product Lead"
+    ],
+    "employee_count": 320
+},
+
+{
+    "company": "PromptStack",
+    "domain": "SaaS",
+    "signals": [
+        "MLOps SaaS",
+        "AI APIs"
+    ],
+    "personas": [
+        "Engineering Head",
+        "Platform Architect"
+    ],
+    "employee_count": 180
+}
+,
+{
+    "company": "GenFlow AI",
+    "domain": "SaaS",
+    "signals": [
+        "AI platform as a service",
+        "Generative AI SaaS",
+        "AI APIs"
+    ],
+    "personas": [
+        "CTO",
+        "AI Product Lead"
+    ],
+    "employee_count": 320
+},
+
+{
+    "company": "PromptStack",
+    "domain": "SaaS",
+    "signals": [
+        "MLOps SaaS",
+        "AI APIs"
+    ],
+    "personas": [
+        "Engineering Head",
+        "Platform Architect"
+    ],
+    "employee_count": 180
+}
+
+
+]

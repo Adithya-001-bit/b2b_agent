@@ -1,0 +1,19 @@
+{
+    "minimum_employee_count": 120,
+    "accepted_domains": [
+        "Healthcare"
+    ],
+    "accepted_signals": [
+        "AI diagnostics",
+        "telemedicine",
+        "patient analytics"
+    ],
+    "accepted_personas": [
+        "Hospital CTO",
+        "Operations Director"
+    ],
+    "rejected_reasons": [
+        "not relevent",
+        "expecting more signals "
+    ]
+}
