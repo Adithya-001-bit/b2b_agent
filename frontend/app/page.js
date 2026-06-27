@@ -240,13 +240,13 @@ export default function Home() {
     const status = getAgentStatus(agentName)
     switch(status) {
       case "active":
-        return "border-emerald-500 bg-emerald-950/20 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)] animate-pulse-glow"
+        return "border-emerald-500 bg-emerald-50/60 scale-[1.02] shadow-[0_4px_16px_rgba(16,185,129,0.12)] animate-pulse-glow"
       case "completed":
-        return "border-emerald-500/50 bg-zinc-900/60 opacity-100 shadow-sm"
+        return "border-emerald-500/50 bg-emerald-50/10 shadow-sm opacity-100"
       case "failed":
-        return "border-red-500/80 bg-red-950/20 shadow-[0_0_15px_rgba(239,68,68,0.15)]"
+        return "border-red-500/80 bg-red-50 shadow-[0_4px_12px_rgba(239,68,68,0.1)]"
       default:
-        return "border-zinc-800/80 bg-zinc-900/10 opacity-60 hover:opacity-90 hover:border-zinc-700"
+        return "border-zinc-200 bg-zinc-50/50 opacity-80 hover:opacity-100 hover:border-zinc-300"
     }
   }
 
@@ -272,25 +272,25 @@ export default function Home() {
     switch(agentName) {
       case "Planner Agent":
         return (
-          <svg className="w-5 h-5 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-cyan-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
           </svg>
         )
       case "Search Agent":
         return (
-          <svg className="w-5 h-5 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-purple-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         )
       case "Qualification Agent":
         return (
-          <svg className="w-5 h-5 text-pink-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-pink-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
         )
       case "Recommendation Agent":
         return (
-          <svg className="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
           </svg>
         )
@@ -343,24 +343,24 @@ export default function Home() {
 
   return (
 
-    <div className="min-h-screen bg-[#030305] text-[#f4f4f7] overflow-hidden flex flex-col font-sans">
+    <div className="min-h-screen bg-[#f3f4f6] text-zinc-800 overflow-hidden flex flex-col font-sans">
 
       {/* Header Banner */}
-      <div className="border-b border-white/5 bg-[#08080d]/80 backdrop-blur-md px-6 py-4 flex items-center justify-between shrink-0">
+      <div className="border-b border-zinc-200 bg-white px-6 py-4 flex items-center justify-between shrink-0 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="relative flex h-2.5 w-2.5">
+          <div className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
           </div>
-          <h1 className="text-base font-bold tracking-wider font-mono text-zinc-100">
+          <h1 className="text-lg font-bold tracking-wider font-mono text-zinc-800">
             B2B AGENT ORCHESTRATION TERMINAL
           </h1>
         </div>
-        <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-500">
-          <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/5">
+        <div className="flex items-center gap-2 font-mono text-xs text-zinc-500">
+          <span className="px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-250">
             FASTAPI RUNNING
           </span>
-          <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
             LANGGRAPH WORKFLOW
           </span>
         </div>
@@ -381,10 +381,10 @@ export default function Home() {
 
         <div className="
           col-span-3
-          bg-[#07070a]/60
+          bg-white
           border
-          border-white/5
-          backdrop-blur-md
+          border-zinc-200
+          shadow-sm
           rounded-2xl
           p-6
           flex
@@ -400,12 +400,12 @@ export default function Home() {
             flex
             items-center
             gap-2
-            text-zinc-200
+            text-zinc-700
             font-mono
             uppercase
             tracking-wider
           ">
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             1. Search Intent
@@ -420,19 +420,20 @@ export default function Home() {
             className="
               w-full
               h-48
-              bg-zinc-950/60
+              bg-zinc-50
               border
-              border-zinc-800
-              focus:border-emerald-500/40
+              border-zinc-300
+              focus:border-emerald-500/60
               focus:ring-1
               focus:ring-emerald-500/20
               rounded-xl
               p-4
               outline-none
               resize-none
-              font-mono
+              font-sans
               text-sm
-              placeholder-zinc-600
+              placeholder-zinc-400
+              text-zinc-800
               transition-all
             "
           />
@@ -442,7 +443,7 @@ export default function Home() {
           {/* ================================= */}
 
           <div className="mt-6 flex flex-col gap-2">
-            <label className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">
+            <label className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
               2. Domain Override Plugin
             </label>
             <select
@@ -454,15 +455,16 @@ export default function Home() {
               }
               className="
                 w-full
-                bg-zinc-950/60
+                bg-zinc-50
                 border
-                border-zinc-800
-                focus:border-emerald-500/40
+                border-zinc-300
+                focus:border-emerald-500/60
                 p-3.5
                 rounded-xl
                 outline-none
                 font-mono
                 text-sm
+                text-zinc-700
                 transition-all
               "
             >
@@ -480,9 +482,9 @@ export default function Home() {
             </select>
           </div>
 
-          <div className="mt-3 flex items-center justify-between text-xs font-mono border-t border-zinc-900 pt-3">
+          <div className="mt-4 flex items-center justify-between text-xs font-mono border-t border-zinc-150 pt-3">
             <span className="text-zinc-500">Pipeline Config:</span>
-            <span className="font-bold text-emerald-400">
+            <span className="font-bold text-emerald-600">
               {selectedPlugin ? `${selectedPlugin}` : 'Gemini Auto'}
             </span>
           </div>
@@ -497,13 +499,13 @@ export default function Home() {
                 font-bold
                 tracking-wider
                 uppercase
-                text-xs
+                text-sm
                 transition-all
                 duration-300
                 cursor-pointer
                 ${loading 
-                  ? 'bg-zinc-800 text-zinc-500 border border-zinc-700/50 shadow-none cursor-not-allowed' 
-                  : 'bg-emerald-500 text-black hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)]'
+                  ? 'bg-zinc-200 text-zinc-400 border border-zinc-300/50 shadow-none cursor-not-allowed' 
+                  : 'bg-emerald-500 text-white hover:bg-emerald-600 hover:shadow-[0_4px_12px_rgba(16,185,129,0.2)]'
                 }
               `}
             >
@@ -520,10 +522,10 @@ export default function Home() {
 
         <div className="
           col-span-6
-          bg-[#07070a]/60
+          bg-white
           border
-          border-white/5
-          backdrop-blur-md
+          border-zinc-200
+          shadow-sm
           rounded-2xl
           p-6
           flex
@@ -539,12 +541,12 @@ export default function Home() {
             flex
             items-center
             gap-2
-            text-zinc-200
+            text-zinc-800
             font-mono
             uppercase
             tracking-wider
           ">
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
             Active Pipeline Graph
@@ -552,10 +554,10 @@ export default function Home() {
 
           {errorMessage && (
             <div className="
-              bg-red-500/10
+              bg-red-50
               border
-              border-red-500/20
-              text-red-400
+              border-red-200
+              text-red-600
               p-4
               rounded-xl
               mb-5
@@ -597,16 +599,16 @@ export default function Home() {
                   {status === "active" && <div className="scan-line" />}
                   
                   <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-sm flex items-center gap-2.5 text-zinc-100">
+                    <h3 className="font-bold text-sm flex items-center gap-2.5 text-zinc-800">
                       {getAgentIcon(agent)}
                       {agent}
                     </h3>
-                    <span className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded font-mono font-bold bg-white/5 text-zinc-300">
+                    <span className="text-xs uppercase tracking-wider px-2.5 py-0.5 rounded font-mono font-bold bg-zinc-100 text-zinc-600">
                       {status}
                     </span>
                   </div>
 
-                  <p className="text-xs text-zinc-400 mt-2 font-mono leading-relaxed">
+                  <p className="text-xs text-zinc-500 mt-2 font-mono leading-relaxed">
                     {getAgentSubtext(agent)}
                   </p>
                 </div>
@@ -657,9 +659,9 @@ export default function Home() {
 
             <div className="
               mt-5
-              bg-zinc-950/40
+              bg-zinc-50
               border
-              border-zinc-900
+              border-zinc-200
               p-5
               rounded-xl
               shrink-0
@@ -668,8 +670,8 @@ export default function Home() {
               <h2 className="
                 text-xs
                 font-bold
-                mb-3
-                text-emerald-400
+                mb-2.5
+                text-emerald-600
                 font-mono
                 uppercase
                 tracking-wider
@@ -688,16 +690,16 @@ export default function Home() {
                   placeholder="Ask a clarifying question about the recommendations..."
                   className="
                     flex-1
-                    bg-zinc-950/80
+                    bg-white
                     border
-                    border-zinc-800
+                    border-zinc-300
                     focus:border-emerald-500/40
                     p-3
                     h-14
                     rounded-lg
                     outline-none
-                    font-mono
-                    text-xs
+                    font-sans
+                    text-sm
                     resize-none
                   "
                 />
@@ -705,14 +707,14 @@ export default function Home() {
                 <button
                   onClick={askChatbot}
                   className="
-                    bg-emerald-500
-                    text-black
+                    bg-emerald-600
+                    text-white
                     px-5
                     rounded-lg
                     font-bold
                     text-xs
                     uppercase
-                    hover:bg-emerald-400
+                    hover:bg-emerald-500
                     transition-all
                     cursor-pointer
                   "
@@ -724,19 +726,19 @@ export default function Home() {
               {chatResponse && (
 
                 <div className="
-                  mt-4
-                  bg-[#0a0a0f]
+                  mt-3
+                  bg-white
                   border
-                  border-zinc-900
+                  border-zinc-200
                   p-4
                   rounded-lg
                   whitespace-pre-wrap
                   text-xs
-                  font-mono
-                  text-zinc-300
+                  font-sans
+                  text-zinc-700
                   leading-relaxed
                 ">
-                  <span className="text-emerald-400 font-bold block mb-1">LOG: RESPONSE</span>
+                  <span className="text-emerald-600 font-bold block mb-1">RESPONSE:</span>
                   {chatResponse}
 
                 </div>
@@ -756,10 +758,10 @@ export default function Home() {
 
         <div className="
           col-span-3
-          bg-[#07070a]/60
+          bg-white
           border
-          border-white/5
-          backdrop-blur-md
+          border-zinc-200
+          shadow-sm
           rounded-2xl
           p-6
           overflow-y-auto
@@ -773,12 +775,12 @@ export default function Home() {
             flex
             items-center
             gap-2
-            text-zinc-200
+            text-zinc-800
             font-mono
             uppercase
             tracking-wider
           ">
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg>
             3. Search Results
@@ -786,7 +788,7 @@ export default function Home() {
 
           {loading ? (
 
-            <div className="text-emerald-400 font-mono text-xs flex items-center gap-2">
+            <div className="text-emerald-600 font-mono text-xs flex items-center gap-2">
               <span className="animate-spin inline-block w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full" />
               Compiling Graph...
             </div>
@@ -799,9 +801,9 @@ export default function Home() {
               {/* DOMAIN */}
 
               <div className="
-                bg-zinc-950/40
+                bg-zinc-50
                 border
-                border-zinc-900
+                border-zinc-200
                 p-4
                 rounded-xl
               ">
@@ -809,7 +811,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-500
                   mb-2
                   uppercase
                   tracking-wider
@@ -817,7 +819,7 @@ export default function Home() {
                   Target Domain
                 </h3>
 
-                <p className="text-sm font-bold text-emerald-400 font-mono">
+                <p className="text-sm font-bold text-emerald-600 font-mono">
                   {result.domain}
                 </p>
 
@@ -827,9 +829,9 @@ export default function Home() {
               {/* SIGNALS */}
 
               <div className="
-                bg-zinc-950/40
+                bg-zinc-50
                 border
-                border-zinc-900
+                border-zinc-200
                 p-4
                 rounded-xl
               ">
@@ -837,7 +839,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-500
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -857,11 +859,11 @@ export default function Home() {
                     <span
                       key={index}
                       className="
-                        bg-emerald-500/10
-                        text-emerald-400
+                        bg-emerald-50
+                        text-emerald-600
                         border
-                        border-emerald-500/15
-                        px-2.5
+                        border-emerald-500/20
+                        px-3
                         py-1
                         rounded-full
                         text-xs
@@ -881,9 +883,9 @@ export default function Home() {
               {/* QUALIFIED COMPANIES */}
 
               <div className="
-                bg-zinc-950/40
+                bg-zinc-50
                 border
-                border-zinc-900
+                border-zinc-200
                 p-4
                 rounded-xl
               ">
@@ -891,7 +893,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-500
                   mb-3.5
                   uppercase
                   tracking-wider
@@ -909,11 +911,12 @@ export default function Home() {
                       <div
                         key={index}
                         className="
-                          bg-[#08080d]/85
+                          bg-white
                           border
-                          border-zinc-800/60
+                          border-zinc-200
                           p-4
                           rounded-xl
+                          shadow-sm
                         "
                       >
 
@@ -922,12 +925,12 @@ export default function Home() {
                           justify-between
                           items-center
                          border-b
-                         border-zinc-900
+                         border-zinc-100
                          pb-2
                          mb-3
                         ">
 
-                          <h4 className="font-bold text-sm text-zinc-200">
+                          <h4 className="font-bold text-sm text-zinc-800">
                             {company.company}
                           </h4>
 
@@ -935,7 +938,7 @@ export default function Home() {
                             text-xs
                             font-mono
                             font-bold
-                            text-emerald-400
+                            text-emerald-600
                           ">
                             {company.confidence}%
                           </span>
@@ -946,7 +949,7 @@ export default function Home() {
                           mt-2
                           space-y-1.5
                          font-mono
-                         text-[11px]
+                         text-xs
                          font-medium
                         ">
 
@@ -956,7 +959,7 @@ export default function Home() {
                             <p
                               key={i}
                               className="
-                                text-zinc-400
+                                text-zinc-500
                                 leading-relaxed
                               "
                             >
@@ -998,13 +1001,13 @@ export default function Home() {
 
                             className="
                               flex-1
-                              bg-emerald-500/10
-                              text-emerald-400
+                              bg-emerald-50
+                              text-emerald-600
                               border
                               border-emerald-500/20
-                              hover:bg-emerald-500
-                              hover:text-black
-                              hover:border-emerald-500
+                              hover:bg-emerald-600
+                              hover:text-white
+                              hover:border-emerald-600
                               py-2
                               rounded-lg
                               text-xs
@@ -1044,13 +1047,13 @@ export default function Home() {
 
                             className="
                               flex-1
-                              bg-red-500/10
-                              text-red-400
+                              bg-red-50
+                              text-red-650
                               border
                               border-red-500/20
-                              hover:bg-red-500
+                              hover:bg-red-600
                               hover:text-white
-                              hover:border-red-500
+                              hover:border-red-650
                               py-2
                               rounded-lg
                               text-xs
@@ -1089,9 +1092,9 @@ export default function Home() {
               {/* RECOMMENDATIONS */}
 
               <div className="
-                bg-zinc-950/40
+                bg-zinc-50
                 border
-                border-zinc-900
+                border-zinc-200/60
                 p-4
                 rounded-xl
               ">
@@ -1099,7 +1102,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-500
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -1108,8 +1111,8 @@ export default function Home() {
                 </h3>
 
                 <p className="
-                  text-zinc-300
-                  font-mono
+                  text-zinc-700
+                  font-sans
                   leading-relaxed
                   whitespace-pre-wrap
                   text-xs
@@ -1123,7 +1126,7 @@ export default function Home() {
 
           ) : (
 
-            <div className="text-xs text-zinc-600 font-mono">
+            <div className="text-xs text-zinc-550 font-mono">
               Ready to compile recommendations...
             </div>
 

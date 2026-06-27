@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050508;
-  --foreground: #f4f4f7;
+  --background: #f8f9fa;
+  --foreground: #18181b;
 }
 
 @theme inline {
@@ -19,15 +19,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Sleek Cyberpunk agent glows */
+/* Light mode agent card glows */
 @keyframes neonPulse {
   0%, 100% {
-    border-color: rgba(16, 185, 129, 0.3);
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.05);
   }
   50% {
-    border-color: rgba(16, 185, 129, 0.75);
-    box-shadow: 0 0 18px rgba(16, 185, 129, 0.25);
+    border-color: rgba(16, 185, 129, 0.85);
+    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.15);
   }
 }
 
@@ -52,26 +52,26 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.35), transparent);
+  background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.4), transparent);
   animation: scanLine 4s infinite linear;
 }
 
-/* Custom developer terminal scrollbar */
+/* Custom developer terminal scrollbar (supports light and dark scrollable areas) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.01);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 9px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 9px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.45);
+  background: rgba(16, 185, 129, 0.5);
 }
