@@ -11,7 +11,6 @@
         ],
         "minimum_employee_count": 100
     },
-
     {
         "domain": "Healthcare",
         "signals": [
@@ -23,7 +22,6 @@
         ],
         "minimum_employee_count": 300
     },
-
     {
         "domain": "Finance",
         "signals": [
@@ -34,5 +32,11 @@
             "Risk Manager"
         ],
         "minimum_employee_count": 400
+    },
+    {
+        "domain": "SAAS",
+        "signals": [],
+        "personas": [],
+        "minimum_employee_count": 100
     }
 ]

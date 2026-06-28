@@ -13,7 +13,6 @@
         ],
         "employee_count": 120
     },
-
     {
         "company": "FarmVision",
         "domain": "Agriculture",
@@ -27,7 +26,6 @@
         ],
         "employee_count": 80
     },
-
     {
         "company": "CropMind Analytics",
         "domain": "Agriculture",
@@ -41,7 +39,6 @@
         ],
         "employee_count": 210
     },
-
     {
         "company": "MedAI Systems",
         "domain": "Healthcare",
@@ -56,7 +53,6 @@
         ],
         "employee_count": 450
     },
-
     {
         "company": "CarePredict",
         "domain": "Healthcare",
@@ -70,7 +66,6 @@
         ],
         "employee_count": 250
     },
-
     {
         "company": "HealthVision AI",
         "domain": "Healthcare",
@@ -84,7 +79,6 @@
         ],
         "employee_count": 600
     },
-
     {
         "company": "FraudShield AI",
         "domain": "Finance",
@@ -98,7 +92,6 @@
         ],
         "employee_count": 600
     },
-
     {
         "company": "FinPilot",
         "domain": "Finance",
@@ -112,7 +105,6 @@
         ],
         "employee_count": 350
     },
-
     {
         "company": "QuantEdge",
         "domain": "Finance",
@@ -126,7 +118,6 @@
         ],
         "employee_count": 500
     },
-
     {
         "company": "CyberGuard Labs",
         "domain": "Cybersecurity",
@@ -140,7 +131,6 @@
         ],
         "employee_count": 300
     },
-
     {
         "company": "SecureNet AI",
         "domain": "Cybersecurity",
@@ -154,7 +144,6 @@
         ],
         "employee_count": 420
     },
-
     {
         "company": "RetailFlow",
         "domain": "Retail",
@@ -168,7 +157,6 @@
         ],
         "employee_count": 700
     },
-
     {
         "company": "ShopMind AI",
         "domain": "Retail",
@@ -182,7 +170,6 @@
         ],
         "employee_count": 280
     },
-
     {
         "company": "LogiChain",
         "domain": "Logistics",
@@ -196,7 +183,6 @@
         ],
         "employee_count": 520
     },
-
     {
         "company": "FleetAI",
         "domain": "Logistics",
@@ -210,7 +196,6 @@
         ],
         "employee_count": 310
     },
-
     {
         "company": "CloudScale SaaS",
         "domain": "SaaS",
@@ -224,7 +209,6 @@
         ],
         "employee_count": 200
     },
-
     {
         "company": "PipelinePro",
         "domain": "SaaS",
@@ -237,65 +221,103 @@
             "Product Lead"
         ],
         "employee_count": 180
+    },
+    {
+        "company": "GenFlow AI",
+        "domain": "SaaS",
+        "signals": [
+            "AI platform as a service",
+            "Generative AI SaaS",
+            "AI APIs"
+        ],
+        "personas": [
+            "CTO",
+            "AI Product Lead"
+        ],
+        "employee_count": 320
+    },
+    {
+        "company": "PromptStack",
+        "domain": "SaaS",
+        "signals": [
+            "MLOps SaaS",
+            "AI APIs"
+        ],
+        "personas": [
+            "Engineering Head",
+            "Platform Architect"
+        ],
+        "employee_count": 180
+    },
+    {
+        "company": "Apex SaaS",
+        "domain": "SaaS",
+        "signals": [
+            "AI automation",
+            "CRM optimization",
+            "predictive sales"
+        ],
+        "personas": [
+            "CTO",
+            "Sales Head",
+            "Revenue Operations"
+        ],
+        "employee_count": 150
+    },
+    {
+        "company": "DataPulse",
+        "domain": "SaaS",
+        "signals": [
+            "real-time analytics",
+            "AI dashboard",
+            "SaaS dashboard"
+        ],
+        "personas": [
+            "Product Manager",
+            "CTO"
+        ],
+        "employee_count": 90
+    },
+    {
+        "company": "AutomateX",
+        "domain": "SaaS",
+        "signals": [
+            "workflow automation",
+            "API integration",
+            "AI automation"
+        ],
+        "personas": [
+            "Operations Director",
+            "CTO"
+        ],
+        "employee_count": 250
+    },
+    {
+        "company": "ScaleFlow",
+        "domain": "SaaS",
+        "signals": [
+            "AI customer support",
+            "CRM optimization",
+            "helpdesk AI"
+        ],
+        "personas": [
+            "Customer Success Lead",
+            "Support VP"
+        ],
+        "employee_count": 130
+    },
+    {
+        "company": "CloudNest",
+        "domain": "SaaS",
+        "signals": [
+            "cloud infrastructure",
+            "devops automation",
+            "AI monitoring"
+        ],
+        "personas": [
+            "DevOps Lead",
+            "CTO"
+        ],
+        "employee_count": 310
     }
-    ,
-{
-    "company": "GenFlow AI",
-    "domain": "SaaS",
-    "signals": [
-        "AI platform as a service",
-        "Generative AI SaaS",
-        "AI APIs"
-    ],
-    "personas": [
-        "CTO",
-        "AI Product Lead"
-    ],
-    "employee_count": 320
-},
-
-{
-    "company": "PromptStack",
-    "domain": "SaaS",
-    "signals": [
-        "MLOps SaaS",
-        "AI APIs"
-    ],
-    "personas": [
-        "Engineering Head",
-        "Platform Architect"
-    ],
-    "employee_count": 180
-}
-,
-{
-    "company": "GenFlow AI",
-    "domain": "SaaS",
-    "signals": [
-        "AI platform as a service",
-        "Generative AI SaaS",
-        "AI APIs"
-    ],
-    "personas": [
-        "CTO",
-        "AI Product Lead"
-    ],
-    "employee_count": 320
-},
-
-{
-    "company": "PromptStack",
-    "domain": "SaaS",
-    "signals": [
-        "MLOps SaaS",
-        "AI APIs"
-    ],
-    "personas": [
-        "Engineering Head",
-        "Platform Architect"
-    ],
-    "employee_count": 180
-}
-
-
 ]
