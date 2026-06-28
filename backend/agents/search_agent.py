@@ -44,42 +44,31 @@ def search_agent(state):
 
         print("Domain matched")
 
-        signal_match_found = False
-
-        for company_signal in company["signals"]:
-
-            for planner_signal in signals:
-
-                # PARTIAL SIGNAL MATCH
-
-                if (
-                    planner_signal.lower() in company_signal.lower()
-                    or
-                    company_signal.lower() in planner_signal.lower()
-                ):
-
-                    signal_match_found = True
+        # Match all domain prospects if no specific target signals are specified
+        if not signals:
+            signal_match_found = True
+        else:
+            signal_match_found = False
+            for company_signal in company["signals"]:
+                for planner_signal in signals:
+                    # PARTIAL SIGNAL MATCH
+                    if (
+                        planner_signal.lower() in company_signal.lower()
+                        or
+                        company_signal.lower() in planner_signal.lower()
+                    ):
+                        signal_match_found = True
 
         if signal_match_found:
-
             print("Signal matched")
-
             matched_companies.append({
-
                 "company": company["company"],
-
                 "domain": company["domain"],
-
                 "signals": company["signals"],
-
                 "personas": company["personas"],
-
                 "employee_count": company["employee_count"]
-
             })
-
         else:
-
             print("No signal match")
 
     print("\nFINAL MATCHED COMPANIES:")

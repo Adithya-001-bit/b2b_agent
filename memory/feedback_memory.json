@@ -2,20 +2,25 @@
     "minimum_employee_count": 120,
     "accepted_domains": [
         "Healthcare",
-        "SaaS"
+        "SaaS",
+        "Finance"
     ],
     "accepted_signals": [
         "AI diagnostics",
         "telemedicine",
         "patient analytics",
         "AI automation",
-        "CRM optimization"
+        "CRM optimization",
+        "fraud detection",
+        "AI risk analysis"
     ],
     "accepted_personas": [
         "Hospital CTO",
         "Operations Director",
         "Sales Head",
-        "CTO"
+        "CTO",
+        "Risk Manager",
+        "CFO"
     ],
     "rejected_reasons": [
         "not relevent",

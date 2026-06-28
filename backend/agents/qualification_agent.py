@@ -61,28 +61,22 @@ def qualification_agent(state):
                 f"Employee count above {minimum_employee_count}"
             )
 
-        matched_signal_count = 0
-
-        for company_signal in company["signals"]:
-
-            for planner_signal in planner_signals:
-
-                if (
-                    planner_signal.lower() in company_signal.lower()
-                    or
-                    company_signal.lower() in planner_signal.lower()
-                ):
-
-                    matched_signal_count += 1
-
-        print("Matched Signal Count:",
-              matched_signal_count)
-
-        confidence += matched_signal_count * 20
-
-        reasons.append(
-            f"{matched_signal_count} matching signals detected"
-        )
+        if not planner_signals:
+            confidence += 40
+            reasons.append("No specific target signals specified, matched domain baseline")
+        else:
+            matched_signal_count = 0
+            for company_signal in company["signals"]:
+                for planner_signal in planner_signals:
+                    if (
+                        planner_signal.lower() in company_signal.lower()
+                        or
+                        company_signal.lower() in planner_signal.lower()
+                    ):
+                        matched_signal_count += 1
+            print("Matched Signal Count:", matched_signal_count)
+            confidence += matched_signal_count * 20
+            reasons.append(f"{matched_signal_count} matching signals detected")
 
         print("Confidence:", confidence)
 
