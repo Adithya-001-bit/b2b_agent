@@ -38,5 +38,11 @@
         "signals": [],
         "personas": [],
         "minimum_employee_count": 100
+    },
+    {
+        "domain": "Education",
+        "signals": [],
+        "personas": [],
+        "minimum_employee_count": 100
     }
 ]
