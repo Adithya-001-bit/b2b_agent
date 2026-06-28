@@ -38,6 +38,13 @@ export default function Home() {
   const [chatResponse, setChatResponse] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
 
+  // Form states for creating custom plugin
+  const [newDomain, setNewDomain] = useState("")
+  const [newMinEmployees, setNewMinEmployees] = useState(100)
+  const [newSignals, setNewSignals] = useState("")
+  const [newPersonas, setNewPersonas] = useState("")
+  const [showPluginForm, setShowPluginForm] = useState(false)
+
 
   // =====================================
   // LOAD PLUGINS
@@ -232,6 +239,72 @@ export default function Home() {
 
     }
 
+  }
+
+
+  // =====================================
+  // CREATE CUSTOM PLUGIN
+  // =====================================
+
+  const handleCreatePlugin = async (e) => {
+    e.preventDefault()
+    
+    if (!newDomain.trim()) {
+      setErrorMessage("Domain name cannot be empty.")
+      return
+    }
+
+    try {
+      setErrorMessage("")
+      
+      const signalsArray = newSignals
+        .split(",")
+        .map(s => s.trim())
+        .filter(s => s.length > 0)
+      
+      const personasArray = newPersonas
+        .split(",")
+        .map(p => p.trim())
+        .filter(p => p.length > 0)
+
+      const payload = {
+        domain: newDomain.trim(),
+        signals: signalsArray,
+        personas: personasArray,
+        minimum_employee_count: parseInt(newMinEmployees) || 100
+      }
+
+      const response = await fetch("http://127.0.0.1:8000/create-plugin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error("HTTP error " + response.status)
+      }
+
+      const getResponse = await fetch("http://127.0.0.1:8000/plugins")
+      if (getResponse.ok) {
+        const getData = await getResponse.json()
+        setPlugins(getData.plugins)
+      }
+
+      setSelectedPlugin(newDomain.trim())
+      setNewDomain("")
+      setNewMinEmployees(100)
+      setNewSignals("")
+      setNewPersonas("")
+      setShowPluginForm(false)
+      
+      alert("Plugin created successfully!")
+
+    } catch (error) {
+      console.error(error)
+      setErrorMessage("Failed to create custom plugin.")
+    }
   }
 
 
@@ -509,6 +582,74 @@ export default function Home() {
             <span className="font-bold text-emerald-600">
               {selectedPlugin ? `${selectedPlugin}` : 'Gemini Auto'}
             </span>
+          </div>
+
+          {/* Create Custom Plugin Accordion */}
+          <div className="mt-4 border-t border-zinc-150 pt-4">
+            <button
+              onClick={() => setShowPluginForm(!showPluginForm)}
+              className="text-xs font-mono text-emerald-600 hover:text-emerald-500 font-bold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+            >
+              {showPluginForm ? "− Hide Plugin Creator" : "+ Create Custom Plugin"}
+            </button>
+
+            {showPluginForm && (
+              <form onSubmit={handleCreatePlugin} className="mt-4 space-y-3 bg-zinc-50 border border-zinc-200 p-4 rounded-xl shadow-inner">
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Domain Name</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Retail"
+                    value={newDomain}
+                    onChange={(e) => setNewDomain(e.target.value)}
+                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Min Employees</label>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    placeholder="100"
+                    value={newMinEmployees}
+                    onChange={(e) => setNewMinEmployees(parseInt(e.target.value) || 100)}
+                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Signals (comma-separated)</label>
+                  <input
+                    type="text"
+                    placeholder="customer analytics, smart checkout"
+                    value={newSignals}
+                    onChange={(e) => setNewSignals(e.target.value)}
+                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Personas (comma-separated)</label>
+                  <input
+                    type="text"
+                    placeholder="CTO, Product Lead"
+                    value={newPersonas}
+                    onChange={(e) => setNewPersonas(e.target.value)}
+                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-emerald-650 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs uppercase tracking-wider transition-all cursor-pointer mt-1"
+                >
+                  Create Plugin
+                </button>
+              </form>
+            )}
           </div>
 
           <div className="mt-auto pt-6">
@@ -868,7 +1009,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-555
                   mb-2
                   uppercase
                   tracking-wider
@@ -896,7 +1037,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-555
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -950,7 +1091,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-555
                   mb-3.5
                   uppercase
                   tracking-wider
@@ -1064,7 +1205,7 @@ export default function Home() {
                               border-emerald-500/20
                               hover:bg-emerald-600
                               hover:text-white
-                              hover:border-emerald-600
+                              hover:border-emerald-650
                               py-2
                               rounded-lg
                               text-xs
@@ -1159,7 +1300,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-550
+                  text-zinc-555
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -1182,7 +1323,7 @@ export default function Home() {
 
           ) : (
 
-            <div className="text-xs text-zinc-550 font-mono">
+            <div className="text-xs text-zinc-555 font-mono">
               Ready to compile recommendations...
             </div>
 
