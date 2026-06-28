@@ -1,9 +1,10 @@
 {
-    "minimum_employee_count": 120,
+    "minimum_employee_count": 130,
     "accepted_domains": [
         "Healthcare",
         "SaaS",
-        "Finance"
+        "Finance",
+        "Agriculture"
     ],
     "accepted_signals": [
         "AI diagnostics",
@@ -12,7 +13,10 @@
         "AI automation",
         "CRM optimization",
         "fraud detection",
-        "AI risk analysis"
+        "AI risk analysis",
+        "AI drones",
+        "smart farming",
+        "precision agriculture"
     ],
     "accepted_personas": [
         "Hospital CTO",
@@ -20,10 +24,12 @@
         "Sales Head",
         "CTO",
         "Risk Manager",
-        "CFO"
+        "CFO",
+        "Operations Head"
     ],
     "rejected_reasons": [
         "not relevent",
-        "expecting more signals "
+        "expecting more signals ",
+        "not relevant "
     ]
 }
