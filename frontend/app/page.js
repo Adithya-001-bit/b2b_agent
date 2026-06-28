@@ -335,13 +335,13 @@ export default function Home() {
     const status = getAgentStatus(agentName)
     switch(status) {
       case "active":
-        return "border-emerald-500 bg-emerald-50/60 scale-[1.02] shadow-[0_4px_16px_rgba(16,185,129,0.12)] animate-pulse-glow"
+        return "border-emerald-400 bg-white scale-[1.02] shadow-[0_8px_24px_rgba(16,185,129,0.15)] animate-pulse-glow text-emerald-950 font-medium"
       case "completed":
-        return "border-emerald-500/50 bg-emerald-50/10 shadow-sm opacity-100"
+        return "border-emerald-200 bg-emerald-50/40 shadow-sm opacity-100 text-emerald-900"
       case "failed":
-        return "border-red-500/80 bg-red-50 shadow-[0_4px_12px_rgba(239,68,68,0.1)]"
+        return "border-red-350 bg-red-50/50 shadow-[0_4px_12px_rgba(239,68,68,0.08)] text-red-900"
       default:
-        return "border-zinc-200 bg-zinc-50/50 opacity-80 hover:opacity-100 hover:border-zinc-300"
+        return "border-zinc-200/80 bg-white/50 opacity-80 hover:opacity-100 hover:border-emerald-250 hover:bg-white/80 hover:shadow-sm"
     }
   }
 
@@ -438,16 +438,21 @@ export default function Home() {
 
   return (
 
-    <div className="min-h-screen bg-[#f3f4f6] text-zinc-800 overflow-hidden flex flex-col font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50/50 to-pink-50 text-zinc-800 overflow-hidden flex flex-col font-sans relative">
+
+      {/* Decorative Background Blobs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-sky-200/20 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-[30%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-pink-200/20 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-[-10%] left-[20%] w-[35vw] h-[35vw] rounded-full bg-emerald-200/20 blur-[120px] pointer-events-none -z-10" />
 
       {/* Header Banner */}
-      <div className="border-b border-zinc-200 bg-white px-6 py-4 flex items-center justify-between shrink-0 shadow-sm">
+      <div className="border-b border-white/50 bg-white/75 backdrop-blur-md px-6 py-4 flex items-center justify-between shrink-0 shadow-sm relative z-10">
         <div className="flex items-center gap-3">
           <div className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
           </div>
-          <h1 className="text-lg font-bold tracking-wider font-mono text-zinc-800">
+          <h1 className="text-lg font-extrabold tracking-wider font-mono bg-gradient-to-r from-sky-600 via-emerald-600 to-pink-600 bg-clip-text text-transparent">
             B2B AGENT ORCHESTRATION TERMINAL
           </h1>
         </div>
@@ -476,16 +481,20 @@ export default function Home() {
 
         <div className="
           col-span-3
-          bg-white
+          bg-white/80
+          backdrop-blur-md
           border
-          border-zinc-200
-          shadow-sm
+          border-sky-100/80
+          shadow-lg
+          shadow-sky-100/20
           rounded-2xl
           p-6
           flex
           flex-col
           overflow-y-auto
           h-full
+          transition-all
+          hover:shadow-sky-100/40
         ">
 
           <h2 className="
@@ -495,12 +504,12 @@ export default function Home() {
             flex
             items-center
             gap-2
-            text-zinc-700
+            text-sky-700
             font-mono
             uppercase
             tracking-wider
           ">
-            <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             1. Search Intent
@@ -515,12 +524,16 @@ export default function Home() {
             className="
               w-full
               h-48
-              bg-zinc-50
+              bg-white/90
               border
-              border-zinc-300
-              focus:border-emerald-500/60
-              focus:ring-1
-              focus:ring-emerald-500/20
+              border-sky-200/80
+              focus:border-sky-400
+              focus:ring-4
+              focus:ring-sky-100
+              sky-input-highlight
+              selection:bg-sky-200
+              selection:text-sky-950
+              caret-sky-500
               rounded-xl
               p-4
               outline-none
@@ -530,6 +543,8 @@ export default function Home() {
               placeholder-zinc-400
               text-zinc-800
               transition-all
+              duration-300
+              shadow-inner
             "
           />
 
@@ -538,7 +553,7 @@ export default function Home() {
           {/* ================================= */}
 
           <div className="mt-6 flex flex-col gap-2">
-            <label className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
+            <label className="text-xs font-mono text-sky-600 uppercase tracking-wider">
               2. Domain Override Plugin
             </label>
             <select
@@ -550,10 +565,12 @@ export default function Home() {
               }
               className="
                 w-full
-                bg-zinc-50
+                bg-white/90
                 border
-                border-zinc-300
-                focus:border-emerald-500/60
+                border-sky-200/80
+                focus:border-sky-400
+                focus:ring-4
+                focus:ring-sky-100
                 p-3.5
                 rounded-xl
                 outline-none
@@ -561,6 +578,7 @@ export default function Home() {
                 text-sm
                 text-zinc-700
                 transition-all
+                duration-300
               "
             >
               <option value="">
@@ -588,27 +606,27 @@ export default function Home() {
           <div className="mt-4 border-t border-zinc-150 pt-4">
             <button
               onClick={() => setShowPluginForm(!showPluginForm)}
-              className="text-xs font-mono text-emerald-600 hover:text-emerald-500 font-bold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+              className="text-xs font-mono text-sky-600 hover:text-sky-500 font-bold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
             >
               {showPluginForm ? "− Hide Plugin Creator" : "+ Create Custom Plugin"}
             </button>
 
             {showPluginForm && (
-              <form onSubmit={handleCreatePlugin} className="mt-4 space-y-3 bg-zinc-50 border border-zinc-200 p-4 rounded-xl shadow-inner">
+              <form onSubmit={handleCreatePlugin} className="mt-4 space-y-3 bg-white/90 border border-sky-100 p-4 rounded-xl shadow-inner">
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Domain Name</label>
+                  <label className="text-[10px] font-mono text-sky-500 uppercase">Domain Name</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Retail"
                     value={newDomain}
                     onChange={(e) => setNewDomain(e.target.value)}
-                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                    className="bg-white/95 border border-sky-200 rounded-lg p-2 text-xs outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all duration-200 caret-sky-500"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Min Employees</label>
+                  <label className="text-[10px] font-mono text-sky-500 uppercase">Min Employees</label>
                   <input
                     type="number"
                     required
@@ -616,35 +634,35 @@ export default function Home() {
                     placeholder="100"
                     value={newMinEmployees}
                     onChange={(e) => setNewMinEmployees(parseInt(e.target.value) || 100)}
-                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                    className="bg-white/95 border border-sky-200 rounded-lg p-2 text-xs outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all duration-200 caret-sky-500"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Signals (comma-separated)</label>
+                  <label className="text-[10px] font-mono text-sky-500 uppercase">Signals (comma-separated)</label>
                   <input
                     type="text"
                     placeholder="customer analytics, smart checkout"
                     value={newSignals}
                     onChange={(e) => setNewSignals(e.target.value)}
-                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                    className="bg-white/95 border border-sky-200 rounded-lg p-2 text-xs outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all duration-200 caret-sky-500"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-mono text-zinc-500 uppercase">Personas (comma-separated)</label>
+                  <label className="text-[10px] font-mono text-sky-500 uppercase">Personas (comma-separated)</label>
                   <input
                     type="text"
                     placeholder="CTO, Product Lead"
                     value={newPersonas}
                     onChange={(e) => setNewPersonas(e.target.value)}
-                    className="bg-white border border-zinc-300 rounded-lg p-2 text-xs outline-none focus:border-emerald-500"
+                    className="bg-white/95 border border-sky-200 rounded-lg p-2 text-xs outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all duration-200 caret-sky-500"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-emerald-650 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs uppercase tracking-wider transition-all cursor-pointer mt-1"
+                  className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 rounded-lg text-xs uppercase tracking-wider transition-all cursor-pointer mt-1 hover:shadow-md hover:shadow-sky-100"
                 >
                   Create Plugin
                 </button>
@@ -667,8 +685,8 @@ export default function Home() {
                 duration-300
                 cursor-pointer
                 ${loading 
-                  ? 'bg-zinc-200 text-zinc-400 border border-zinc-300/50 shadow-none cursor-not-allowed' 
-                  : 'bg-emerald-500 text-white hover:bg-emerald-600 hover:shadow-[0_4px_12px_rgba(16,185,129,0.2)]'
+                  ? 'bg-zinc-100 text-zinc-400 border border-zinc-200 shadow-none cursor-not-allowed' 
+                  : 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white hover:from-sky-600 hover:to-indigo-600 hover:shadow-[0_4px_15px_rgba(14,165,233,0.35)]'
                 }
               `}
             >
@@ -685,16 +703,20 @@ export default function Home() {
 
         <div className="
           col-span-6
-          bg-white
+          bg-white/80
+          backdrop-blur-md
           border
-          border-zinc-200
-          shadow-sm
+          border-emerald-100/80
+          shadow-lg
+          shadow-emerald-100/20
           rounded-2xl
           p-6
           flex
           flex-col
           overflow-y-auto
           h-full
+          transition-all
+          hover:shadow-emerald-100/40
         ">
 
           <h2 className="
@@ -801,13 +823,13 @@ export default function Home() {
           {/* TERMINAL LOG */}
           {/* ================================= */}
           {result && (
-            <div className="mt-5 bg-zinc-950 border border-zinc-900 rounded-xl p-5 shadow-2xl relative shrink-0">
-              <div className="flex items-center justify-between border-b border-zinc-900 pb-2 mb-3">
+            <div className="mt-5 bg-zinc-900/95 backdrop-blur-md border border-zinc-800 rounded-xl p-5 shadow-2xl relative shrink-0">
+              <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-3">
                 <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/30 border border-red-500/20" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/30 border border-yellow-500/20" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/30 border border-green-500/20" />
-                  <span className="text-[10px] text-zinc-500 font-mono ml-1.5">orchestrator_log.sh</span>
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.5)]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                  <span className="text-[10px] text-zinc-400 font-mono ml-1.5">orchestrator_log.sh</span>
                 </div>
               </div>
               <div className="font-mono text-xs text-zinc-300 space-y-1.5 h-44 overflow-y-auto pr-1 select-text selection:bg-emerald-500/30">
@@ -839,9 +861,9 @@ export default function Home() {
 
             <div className="
               mt-5
-              bg-zinc-50
+              bg-emerald-50/40
               border
-              border-zinc-200
+              border-emerald-100
               p-5
               rounded-xl
               shrink-0
@@ -870,10 +892,16 @@ export default function Home() {
                   placeholder="Ask a clarifying question about the recommendations..."
                   className="
                     flex-1
-                    bg-white
+                    bg-white/95
                     border
-                    border-zinc-300
-                    focus:border-emerald-500/40
+                    border-emerald-200
+                    focus:border-emerald-450
+                    focus:ring-4
+                    focus:ring-emerald-100
+                    emerald-input-highlight
+                    selection:bg-emerald-200
+                    selection:text-emerald-950
+                    caret-emerald-500
                     p-3
                     h-14
                     rounded-lg
@@ -881,20 +909,23 @@ export default function Home() {
                     font-sans
                     text-sm
                     resize-none
+                    transition-all
+                    duration-300
                   "
                 />
 
                 <button
                   onClick={askChatbot}
                   className="
-                    bg-emerald-600
+                    bg-emerald-500
                     text-white
                     px-5
                     rounded-lg
                     font-bold
                     text-xs
                     uppercase
-                    hover:bg-emerald-500
+                    hover:bg-emerald-600
+                    hover:shadow-[0_4px_12px_rgba(16,185,129,0.25)]
                     transition-all
                     cursor-pointer
                   "
@@ -907,9 +938,9 @@ export default function Home() {
 
                 <div className="
                   mt-3
-                  bg-white
+                  bg-white/90
                   border
-                  border-zinc-200
+                  border-emerald-100
                   p-4
                   rounded-lg
                   whitespace-pre-wrap
@@ -917,6 +948,7 @@ export default function Home() {
                   font-sans
                   text-zinc-700
                   leading-relaxed
+                  shadow-sm
                 ">
                   <span className="text-emerald-600 font-bold block mb-1">RESPONSE:</span>
                   {chatResponse}
@@ -938,14 +970,18 @@ export default function Home() {
 
         <div className="
           col-span-3
-          bg-white
+          bg-white/80
+          backdrop-blur-md
           border
-          border-zinc-200
-          shadow-sm
+          border-pink-100/80
+          shadow-lg
+          shadow-pink-100/20
           rounded-2xl
           p-6
           overflow-y-auto
           h-full
+          transition-all
+          hover:shadow-pink-100/40
         ">
 
           <h2 className="
@@ -955,12 +991,12 @@ export default function Home() {
             flex
             items-center
             gap-2
-            text-zinc-800
+            text-pink-700
             font-mono
             uppercase
             tracking-wider
           ">
-            <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg>
             3. Search Results
@@ -970,24 +1006,24 @@ export default function Home() {
 
             <div className="space-y-4 animate-pulse">
               {/* Skeleton Domain */}
-              <div className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl h-20 relative overflow-hidden flex flex-col justify-center">
-                <div className="bg-zinc-200 h-3 w-1/4 rounded mb-2 animate-shimmer" />
-                <div className="bg-zinc-200 h-4 w-1/2 rounded animate-shimmer" />
+              <div className="bg-pink-50/30 border border-pink-100 p-4 rounded-xl h-20 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-pink-100/50 h-3 w-1/4 rounded mb-2 animate-shimmer" />
+                <div className="bg-pink-100/50 h-4 w-1/2 rounded animate-shimmer" />
               </div>
               {/* Skeleton Signals */}
-              <div className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl h-24 relative overflow-hidden flex flex-col justify-center">
-                <div className="bg-zinc-200 h-3 w-1/3 rounded mb-3 animate-shimmer" />
+              <div className="bg-pink-50/30 border border-pink-100 p-4 rounded-xl h-24 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-pink-100/50 h-3 w-1/3 rounded mb-3 animate-shimmer" />
                 <div className="flex gap-2">
-                  <div className="bg-zinc-200 h-6 w-16 rounded-full animate-shimmer" />
-                  <div className="bg-zinc-200 h-6 w-20 rounded-full animate-shimmer" />
-                  <div className="bg-zinc-200 h-6 w-24 rounded-full animate-shimmer" />
+                  <div className="bg-pink-100/60 h-6 w-16 rounded-full animate-shimmer" />
+                  <div className="bg-pink-100/60 h-6 w-20 rounded-full animate-shimmer" />
+                  <div className="bg-pink-100/60 h-6 w-24 rounded-full animate-shimmer" />
                 </div>
               </div>
               {/* Skeleton Qualified Companies */}
-              <div className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl h-48 relative overflow-hidden flex flex-col justify-center">
-                <div className="bg-zinc-200 h-3 w-1/2 rounded mb-4 animate-shimmer" />
-                <div className="bg-zinc-200 h-10 w-full rounded-lg mb-2 animate-shimmer" />
-                <div className="bg-zinc-200 h-10 w-full rounded-lg animate-shimmer" />
+              <div className="bg-pink-50/30 border border-pink-100 p-4 rounded-xl h-48 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-pink-100/50 h-3 w-1/2 rounded mb-4 animate-shimmer" />
+                <div className="bg-pink-100/60 h-10 w-full rounded-lg mb-2 animate-shimmer" />
+                <div className="bg-pink-100/60 h-10 w-full rounded-lg animate-shimmer" />
               </div>
             </div>
 
@@ -996,12 +1032,10 @@ export default function Home() {
             <div className="space-y-6">
 
 
-              {/* DOMAIN */}
-
-              <div className="
-                bg-zinc-50
+                            <div className="
+                bg-pink-50/40
                 border
-                border-zinc-200
+                border-pink-100
                 p-4
                 rounded-xl
               ">
@@ -1009,7 +1043,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-555
+                  text-pink-700
                   mb-2
                   uppercase
                   tracking-wider
@@ -1017,7 +1051,7 @@ export default function Home() {
                   Target Domain
                 </h3>
 
-                <p className="text-sm font-bold text-emerald-600 font-mono">
+                <p className="text-sm font-bold text-pink-650 font-mono">
                   {result.domain}
                 </p>
 
@@ -1027,9 +1061,9 @@ export default function Home() {
               {/* SIGNALS */}
 
               <div className="
-                bg-zinc-50
+                bg-pink-50/40
                 border
-                border-zinc-200
+                border-pink-100
                 p-4
                 rounded-xl
               ">
@@ -1037,7 +1071,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-555
+                  text-pink-700
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -1057,10 +1091,10 @@ export default function Home() {
                     <span
                       key={index}
                       className="
-                        bg-emerald-50
-                        text-emerald-600
+                        bg-pink-50
+                        text-pink-600
                         border
-                        border-emerald-500/20
+                        border-pink-300/30
                         px-3
                         py-1
                         rounded-full
@@ -1081,9 +1115,9 @@ export default function Home() {
               {/* QUALIFIED COMPANIES */}
 
               <div className="
-                bg-zinc-50
+                bg-pink-50/40
                 border
-                border-zinc-200
+                border-pink-100
                 p-4
                 rounded-xl
               ">
@@ -1091,7 +1125,7 @@ export default function Home() {
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-555
+                  text-pink-700
                   mb-3.5
                   uppercase
                   tracking-wider
@@ -1109,12 +1143,16 @@ export default function Home() {
                       <div
                         key={index}
                         className="
-                          bg-white
+                          bg-white/95
                           border
-                          border-zinc-200
+                          border-pink-100
                           p-4
                           rounded-xl
                           shadow-sm
+                          hover:shadow-md
+                          hover:border-pink-200
+                          transition-all
+                          duration-300
                         "
                       >
 
@@ -1123,7 +1161,7 @@ export default function Home() {
                           justify-between
                           items-center
                          border-b
-                         border-zinc-100
+                         border-pink-100/50
                          pb-2
                          mb-3
                         ">
@@ -1136,7 +1174,7 @@ export default function Home() {
                             text-xs
                             font-mono
                             font-bold
-                            text-emerald-600
+                            text-pink-600
                           ">
                             {company.confidence}%
                           </span>
@@ -1146,9 +1184,9 @@ export default function Home() {
                         <div className="
                           mt-2
                           space-y-1.5
-                         font-mono
-                         text-xs
-                         font-medium
+                          font-mono
+                          text-xs
+                          font-medium
                         ">
 
                           {company.reasons?.map(
@@ -1157,7 +1195,7 @@ export default function Home() {
                             <p
                               key={i}
                               className="
-                                text-zinc-550
+                                text-zinc-500
                                 leading-relaxed
                               "
                             >
@@ -1290,17 +1328,26 @@ export default function Home() {
               {/* RECOMMENDATIONS */}
 
               <div className="
-                bg-zinc-50
+                bg-gradient-to-br
+                from-indigo-50/40
+                via-purple-50/30
+                to-pink-50/40
                 border
-                border-zinc-200/60
-                p-4
+                border-indigo-100
+                p-5
                 rounded-xl
+                shadow-sm
+                shadow-indigo-100/10
+                hover:shadow-md
+                hover:border-indigo-200
+                transition-all
+                duration-300
               ">
 
                 <h3 className="
                   text-xs
                   font-mono
-                  text-zinc-555
+                  text-indigo-950/80
                   mb-2.5
                   uppercase
                   tracking-wider
@@ -1309,10 +1356,11 @@ export default function Home() {
                 </h3>
 
                 <p className="
-                  text-zinc-700
+                  text-zinc-800
                   font-sans
                   leading-relaxed
                   text-xs
+                  font-medium
                 ">
                   <TypewriterText text={result.final_recommendations} />
                 </p>

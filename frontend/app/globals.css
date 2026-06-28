@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080a10;
-  --foreground: #f4f5f8;
-  --card-bg: rgba(15, 22, 42, 0.6);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --cyber-grid: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(255, 255, 255, 0.6);
+  --cyber-grid: linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
 }
 
 @theme inline {
@@ -24,7 +24,7 @@ body {
   position: relative;
 }
 
-/* Moving grid background overlay */
+/* Moving grid background overlay in light mode */
 body::before {
   content: "";
   position: fixed;
@@ -36,7 +36,7 @@ body::before {
   background-size: 40px 40px;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.65;
+  opacity: 0.8;
   animation: gridDrift 20s infinite linear;
 }
 
@@ -49,29 +49,29 @@ body::before {
   }
 }
 
-/* Glassmorphism panel system */
+/* Glassmorphism panel system for light mode */
 .glass-panel {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   backdrop-filter: blur(16px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.04);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.05);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06), 0 0 15px rgba(16, 185, 129, 0.05);
 }
 
-/* Glowing active agent cards */
+/* Glowing active agent cards - soft pulse */
 @keyframes neonPulse {
   0%, 100% {
     border-color: rgba(16, 185, 129, 0.4);
-    box-shadow: 0 0 25px rgba(16, 185, 129, 0.15), inset 0 0 10px rgba(16, 185, 129, 0.05);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15), inset 0 0 8px rgba(16, 185, 129, 0.03);
   }
   50% {
     border-color: rgba(16, 185, 129, 0.85);
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.35), inset 0 0 20px rgba(16, 185, 129, 0.15);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.25), inset 0 0 12px rgba(16, 185, 129, 0.08);
   }
 }
 
@@ -79,7 +79,7 @@ body::before {
   animation: neonPulse 2s infinite ease-in-out;
 }
 
-/* Scan line for active agents */
+/* Scan line for active agents in light mode */
 @keyframes scanLine {
   0% {
     top: -10%;
@@ -94,7 +94,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.5), transparent);
+  background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.3), transparent);
   animation: scanLine 3s infinite linear;
 }
 
@@ -127,26 +127,26 @@ body::before {
   animation: flowDot 1.8s infinite linear;
 }
 
-/* Sleek cyberpunk scrollbars */
+/* Sleek light scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(15, 23, 42, 0.02);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.08);
   border-radius: 9px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.3);
 }
 
-/* Skeleton Shimmer Loading in Dark Theme */
+/* Skeleton Shimmer Loading in Light Theme */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -157,18 +157,18 @@ body::before {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.03) 25%, rgba(0, 0, 0, 0.06) 50%, rgba(0, 0, 0, 0.03) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.8s infinite linear;
 }
 
 /* Text glow */
 .text-glow-emerald {
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
 }
 
 /* Typewriter wrapper */
@@ -176,4 +176,31 @@ body::before {
   border-left: 2px solid #10b981;
   padding-left: 14px;
   background: rgba(16, 185, 129, 0.02);
+}
+
+/* Custom typing highlighting animations for user feedback */
+.sky-input-highlight:focus {
+  animation: skyHighlightPulse 2s infinite ease-in-out;
+}
+
+@keyframes skyHighlightPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15), 0 4px 12px rgba(14, 165, 233, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(14, 165, 233, 0.25), 0 6px 16px rgba(14, 165, 233, 0.15);
+  }
+}
+
+.emerald-input-highlight:focus {
+  animation: emeraldHighlightPulse 2s infinite ease-in-out;
+}
+
+@keyframes emeraldHighlightPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), 0 4px 12px rgba(16, 185, 129, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25), 0 6px 16px rgba(16, 185, 129, 0.15);
+  }
 }

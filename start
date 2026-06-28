@@ -1,1 +1,13 @@
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+// frontend start : 
+---> cd frontend
+---> frontend> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+---> frontend> npm run dev
+
+
+//backend start :
+--->cd backend 
+---> backend> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+---> backend> venv\Scripts\activate
+---> backend> uvicorn main:app --reload
+
+
