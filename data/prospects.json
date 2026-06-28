@@ -319,5 +319,44 @@
             "CTO"
         ],
         "employee_count": 310
+    },
+    {
+        "company": "LearnHub",
+        "domain": "Education",
+        "signals": [
+            "online learning",
+            "LMS platform"
+        ],
+        "personas": [
+            "CTO",
+            "Principal"
+        ],
+        "employee_count": 140
+    },
+    {
+        "company": "EdClass AI",
+        "domain": "Education",
+        "signals": [
+            "AI tutoring",
+            "student scoring"
+        ],
+        "personas": [
+            "Product VP",
+            "Academic Director"
+        ],
+        "employee_count": 85
+    },
+    {
+        "company": "QuizVibe",
+        "domain": "Education",
+        "signals": [
+            "gamified learning",
+            "quizzes"
+        ],
+        "personas": [
+            "Operations Manager",
+            "Founder"
+        ],
+        "employee_count": 200
     }
 ]
