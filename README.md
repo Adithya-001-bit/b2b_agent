@@ -1,3 +1,8 @@
+
+TEAM : AP&TS
+
+github link : https://github.com/Adithya-001-bit/b2b_agent/
+
 # Agentic AI Prospect Intelligence Platform
 
 An advanced, adaptive agentic AI platform designed to automate high-intent B2B prospect identification, qualification, and outreach campaign generation. Powered by **LangGraph**, **FastAPI**, and **Next.js**, the platform leverages a collaborative multi-agent architecture and a stateful human-in-the-loop feedback loop that dynamically optimizes target lead profiles.
