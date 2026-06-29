@@ -1,90 +1,135 @@
-# B2B Agent Orchestration Terminal
+# Agentic AI Prospect Intelligence Platform
 
-An advanced, adaptive agentic AI platform designed to automate high-intent B2B prospect identification, qualification, and outreach campaign generation. Powered by **LangGraph**, **FastAPI**, and **Next.js**, the platform leverages a collaborative multi-agent architecture and a real-time user feedback loop that dynamically optimizes target lead profiles.
-
----
-
-## 🎯 Business Value & Use Case (30% Evaluation Weight)
-
-In enterprise sales and business development, identifying relevant business leads and personalizing outreach takes hours of manual research. Traditional databases (like static CRM exports) are:
-1. **Outdated:** Company headcounts and hiring requirements change daily.
-2. **Inflexible:** Searches are limited to generic keyword matching.
-3. **Static:** Search filters do not adapt to user preferences over time.
-
-### The Solution: Agentic B2B Orchestration
-Our terminal solves this by orchestrating a pipeline of specialized AI agents. Sales teams can type natural language search queries (e.g., *"startups building AI drone solutions for agriculture"*), and the system dynamically:
-- Translates natural language requests into specific industry domains, hiring keywords, and buyer personas.
-- Runs dynamic queries on self-enriching prospect datasets.
-- Automatically scores company matches and filters them using dynamic constraints.
-- Generates tailored outbound campaigns.
-- **Learns in Real-Time:** If a user rejects a lead, the agentic engine recalculates thresholds (e.g. increasing the minimum employee counts or logging rejected keywords), immediately modifying subsequent searches.
+An advanced, adaptive agentic AI platform designed to automate high-intent B2B prospect identification, qualification, and outreach campaign generation. Powered by **LangGraph**, **FastAPI**, and **Next.js**, the platform leverages a collaborative multi-agent architecture and a stateful human-in-the-loop feedback loop that dynamically optimizes target lead profiles.
 
 ---
 
-## 🏗️ Platform Architecture (70% Evaluation Weight)
+## 🏗️ System Architecture
 
-The platform is designed around a decoupled, microservice-ready architecture that isolates front-end rendering, API routing, agent state machine orchestration, and persistent storage.
+The platform is designed around a decoupled, microservice-ready architecture that isolates the Next.js front-end client, the FastAPI gateway server, the LangGraph agentic orchestration engine, and an unstructured NoSQL document storage layer.
+
+![Platform Architecture](architecture.png)
+
+### Architectural Flow:
+1. **Frontend ↔ Backend**: Next.js communicates bidirectionally with FastAPI using REST APIs for triggering executions, retrieving logs, and managing plugins.
+2. **Backend ↔ Orchestration**: FastAPI manages a stateful LangGraph cycle that coordinates task execution between four specialized agents.
+3. **Orchestration ↔ Database**: The agents query the unstructured **Prospect Database** to find matches, reference **Domain Plugins** for configuration overrides, and update **Feedback Memory** dynamically.
+
+---
+
+## 🤖 Collaborative Agentic Workflow
+
+The platform leverages **LangGraph** to model the search-qualification-recommendation pipeline as a deterministic state machine. The workflow consists of four collaborative agents:
 
 ```
-                  ┌──────────────────────────────┐
-                  │   Next.js Front-End Client    │
-                  └──────────────┬───────────────┘
-                                 │ HTTP / REST
-                  ┌──────────────▼───────────────┐
-                  │    FastAPI Gateway Server    │
-                  └──────────────┬───────────────┘
-                                 │ State Loop
-┌────────────────────────────────┼────────────────────────────────┐
-│ LangGraph Orchestration Layer  │                                │
-│                                ▼                                │
-│   ┌─────────────────────────────────────────────────────────┐   │
-│   │ 1. PLANNER AGENT (Gemini)                               │   │
-│   │    Parses search queries into domains & signals.        │   │
-│   └────────────────────────────┬────────────────────────────┘   │
-│                                │ State passing                  │
-│   ┌────────────────────────────▼────────────────────────────┐   │
-│   │ 2. SEARCH AGENT                                         │   │
-│   │    Queries prospect databases using active signals.     │   │
-│   └────────────────────────────┬────────────────────────────┘   │
-│                                │ State passing                  │
-│   ┌────────────────────────────▼────────────────────────────┐   │
-│   │ 3. QUALIFICATION AGENT                                  │   │
-│   │    Scores prospects based on employee size & history.   │   │
-│   └────────────────────────────┬────────────────────────────┘   │
-│                                │ State passing                  │
-│   ┌────────────────────────────▼────────────────────────────┐   │
-│   │ 4. RECOMMENDATION AGENT (Gemini)                        │   │
-│   │    Generates personalized outreach campaign email copy. │   │
-│   └─────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│  1. PLANNER     │ ──> │    2. SEARCH    │ ──> │3. QUALIFICATION │ ──> │4. RECOMMENDATION│
+│     AGENT       │     │      AGENT      │     │     AGENT       │     │     AGENT       │
+└─────────────────┘     └─────────────────┘     └─────────────────┘     └─────────────────┘
 ```
 
-### 1. Collaborative Multi-Agent Network (LangGraph)
-* **Planner Agent (Gemini):** Takes user query text and extracts target industries (e.g. Healthcare, Finance, Agriculture), active market signals (e.g. telemedicine, smart farming), and buyer personas (e.g. Chief Medical Officer, VP of AI). It supports manual **Domain Override Plugins** that bypass NLP extraction when rigid scoping is required.
-* **Search Agent:** Coordinates queries against the prospect dataset based on domain and signal array intersections.
-* **Qualification Agent:** Evaluates candidate fits. It checks the live memory logs for user constraints (e.g., minimum employee size and previously blacklisted reasons) and calculates a confidence score.
-* **Recommendation Agent (Gemini):** Generates targeted outbound email templates for selected buyer personas based on company-specific signals.
-
-### 2. Ingestion & Web Engineering Pipeline (Production Roadmap)
-In production, prospects are gathered dynamically by a separate data ingestion engine:
-- **Crawlers (Playwright & Scrapy):** Scan corporate websites, news outlets, and job postings for key hiring signals.
-- **Enrichment Services:** Integrates with clearbit/Apollo API endpoints to fetch live headcount distributions and executive emails.
-- **Bulk Loader:** Normalizes and upserts records into the B2B Prospect Database.
-
-### 3. Persistent Database State & Caching
-Our design specifies a relational database (PostgreSQL with JSONB) replacing local file mockups. This ensures:
-- **Atomicity & Consistency:** Thread-safe feedback writes.
-- **JSONB Querying:** Dynamic signal array intersection (`?|` operator) to filter prospects efficiently.
-- **Real-Time State Retention:** Allows multiple sales reps to run queries simultaneously while sharing a single, learning feedback memory model.
+1. **Planner Agent (Gemini)**: Takes a natural language query (e.g., *"startups building AI solutions in healthcare"*) and extracts the target industry domain, target signals, and key buyer personas. It translates unstructured intent into structured query parameters.
+2. **Search Agent**: Queries the unstructured **Prospect Database** (NoSQL collections) to identify businesses matching the extracted domain and signal criteria.
+3. **Qualification Agent**: Evaluates company fit. It scores the leads based on employee size, matches signal keywords, and filters prospects against user constraints fetched from the live **Feedback Memory**.
+4. **Recommendation Agent (Gemini)**: Generates highly tailored, personalized outbound outreach email copy for the target personas identified, highlighting the company's matched signals.
 
 ---
 
-## 🛠️ Setup & Local Execution Guide
+## 🔌 Custom Plugin Orchestration
+
+Sales teams can bypass the default LLM parsing rules by creating and applying **Domain Override Plugins**. This ensures rigid criteria matching when executing campaigns.
+
+* **Dynamic Creation**: Users can configure new override rules directly from the frontend UI by entering:
+  * Target Domain (e.g., `SaaS`)
+  * Minimum Employee Count (e.g., `120`)
+  * Signal Keywords (e.g., `ai automation, workflow automation`)
+  * Target personas (e.g., `Product Manager, CTO`)
+* **Persistence**: Custom plugins are saved directly into the unstructured document store (`memory/domain_plugins.json`) and instantly reload into the UI selection dropdown.
+* **Orchestration Bypass**: When a plugin is selected, the **Planner Agent** bypasses LLM inference and applies the plugin's strict criteria directly to the downstream Search and Qualification agents.
+
+---
+
+## 🧠 Reinforcement & Feedback Memory System
+
+The platform features an adaptive, real-time learning loop that updates search parameters on the fly based on human decisions (Accept/Reject):
+
+* **Human-in-the-Loop Approval**: Users review matched prospects and click **Accept** or **Reject**.
+* **Memory Updates**: Rejecting a prospect triggers a `POST` request to the backend that updates the **Feedback Memory** document:
+  * Automatically increments the `min_employee_count` by **10** (dynamic thresholding).
+  * appends the user's rejection reason (e.g., *"not looking for SaaS sales"*) to `rejected_reasons[]`.
+* **Subsequent Query Optimization**: On subsequent search iterations, the **Qualification Agent** reads these memory logs and automatically penalizes or filters out prospects that fall under the updated constraints.
+
+---
+
+## 💾 Unstructured Database Schema (NoSQL Document Store)
+
+To accommodate highly varied corporate datasets, crawl outcomes, and changing memory structures, the platform utilizes unstructured JSON document collections simulating a NoSQL/MongoDB setup:
+
+### 1. Prospects Collection (`data/prospects.json`)
+Stores company profiles, crawled signals, and nested contact data:
+```json
+{
+  "_id": "64a7c8e9f1d2c3b4a5e6f7a1",
+  "company_name": "AgroTech Solutions",
+  "domain": "Agriculture",
+  "employee_count": 45,
+  "signals": ["smart farming", "drones", "iot monitoring"],
+  "contacts": [
+    {
+      "name": "Sarah Jenkins",
+      "role": "VP of Engineering",
+      "email": "sarah.j@agrotech.com",
+      "phone": "+1-555-0198"
+    }
+  ],
+  "metadata": {
+    "crawled_at": "2026-06-29T08:00:00Z",
+    "source_url": "https://agrotech.com"
+  }
+}
+```
+
+### 2. Feedback Memory Collection (`memory/feedback_memory.json`)
+Tracks adaptive scoring thresholds and rejection signals:
+```json
+{
+  "_id": "64a7c8e9f1d2c3b4a5e6f7a2",
+  "user_id": "default_user",
+  "min_employee_count": 50,
+  "rejected_reasons": ["not relevant", "expecting more signals"],
+  "last_updated": "2026-06-29T08:15:30Z"
+}
+```
+
+### 3. Domain Override Plugins Collection (`memory/domain_plugins.json`)
+Stores custom configuration settings created dynamically via the frontend form:
+```json
+{
+  "_id": "64a7c8e9f1d2c3b4a5e6f7a3",
+  "domain": "SaaS",
+  "name": "AI Automation Finder",
+  "signals": ["ai automation", "workflow automation"],
+  "employee_count": 100,
+  "created_at": "2026-06-29T08:10:00Z"
+}
+```
+
+---
+
+## 🛠️ Technology Stack
+
+* **Frontend**: Next.js (React), TailwindCSS, custom CSS micro-animations (Pulse Tracks, typewriter outreach loaders).
+* **Backend**: FastAPI, Uvicorn, LangGraph (Graph States & Transitions), Google GenAI SDK (Gemini API).
+* **Data Layer**: Unstructured Document Store (JSON files mimicking NoSQL schema structures).
+
+---
+
+## 🚀 Setup & Local Execution Guide
 
 ### Prerequisites
-- **Node.js** (v18 or higher)
-- **Python** (3.10 or higher)
-- **Gemini API Key** (Set as environment variable)
+* **Node.js** (v18 or higher)
+* **Python** (3.10 or higher)
+* **Gemini API Key**
 
 ### 1. Backend Setup
 1. Navigate to the backend directory:
@@ -93,15 +138,15 @@ Our design specifies a relational database (PostgreSQL with JSONB) replacing loc
    ```
 2. Create and activate a virtual environment:
    ```bash
-   # Windows
+   # Windows (PowerShell)
    python -m venv venv
-   venv\Scripts\activate
+   .\venv\Scripts\Activate.ps1
 
    # macOS / Linux
    python3 -m venv venv
    source venv/bin/activate
    ```
-3. Install Python dependencies:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
@@ -109,11 +154,11 @@ Our design specifies a relational database (PostgreSQL with JSONB) replacing loc
    ```env
    GEMINI_API_KEY=your_gemini_api_key_here
    ```
-5. Start the FastAPI development server:
+5. Start the FastAPI server:
    ```bash
    uvicorn main:app --reload
    ```
-   The backend API will be running at `http://127.0.0.1:8000`.
+   The backend API will run at `http://127.0.0.1:8000`.
 
 ### 2. Frontend Setup
 1. Open a new terminal and navigate to the frontend directory:
@@ -128,12 +173,15 @@ Our design specifies a relational database (PostgreSQL with JSONB) replacing loc
    ```bash
    npm run dev
    ```
-   Open `http://localhost:3000` in your browser to access the dashboard terminal.
+   Open `http://localhost:3000` in your browser to access the dashboard.
 
 ---
 
-## 💡 Key Design Decisions & Best Practices
+## 🔮 Future Improvements (Ingestion & Web Engineering Pipeline)
 
-1. **Decoupled Architecture:** Frontend React components only communicate with FastAPI endpoints. The agentic pipeline is fully modular, allowing developer testing of individual agents in isolation.
-2. **LangGraph State Tracking:** LangGraph handles agent execution state sequentially and loops back/redirects execution based on query parameters. State is never lost between agents.
-3. **Adaptive Thresholding:** The qualification engine retrieves user feedback from previous runs, making the terminal's scoring intelligence reactive and custom-tailored to specific business constraints over time.
+To take this platform from a local terminal to a production enterprise system, the following pipeline extensions are planned:
+
+1. **Production Document Store**: Migrate the local JSON file stores to a clustered MongoDB or Amazon DocumentDB database for atomicity and high-throughput concurrent querying.
+2. **Ingestion Crawlers**: Deploy background crawler workers using **Playwright** and **Scrapy** to scan corporate sites and press releases daily for new hiring triggers or product announcements.
+3. **Data Enrichment**: Integrate API connectors with clearbit or Apollo to dynamically fetch employee count distributions, verified corporate emails, and telephone numbers.
+4. **Cron Search Triggers**: Build an automated scheduler to run recurring search queries and notify account executives when high-intent prospects match active signals.
